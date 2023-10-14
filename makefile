@@ -1,6 +1,9 @@
 build:
 	cargo build
 
+flash:
+	 arm-none-eabi-gdb -q target/thumbv7em-none-eabihf/debug/my_test --command=gdb_commands.txt
+
 init:
 	rustup default nightly
 	rustup target add thumbv7em-none-eabihf
