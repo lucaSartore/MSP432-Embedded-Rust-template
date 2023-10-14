@@ -1,5 +1,5 @@
 [package]
-name = "my_test"
+name = "template"
 version = "0.1.0"
 edition = "2021"
 
@@ -10,6 +10,7 @@ panic-halt = "0.2.0"
 irq = "0.2.3"
 
 [dependencies]
+# this is in local since the latest version on creates.io dose not compile for some reasons.
 msp432p401r-hal = { version = "0.2.0", path = "msp432p401r-hal" }
 cortex-m = "0.7.5"
 cortex-m-rt = "0.7.1"
