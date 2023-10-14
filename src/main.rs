@@ -11,6 +11,9 @@ use msp432p401r_hal as hal;
 
 use hal::{clock::*, flash::*, gpio::*, pcm::*, timer::*, watchdog::*};
 
+
+
+
 #[entry]
 // main
 fn main() -> ! {
@@ -43,9 +46,7 @@ fn main() -> ! {
     hprintln!("Hello World Example - PCM: {}", _pcm_sel as u32);
 
     let gpio = p.DIO.split();
-    let mut red = gpio.p1_0.into_output();
-    let mut blue = gpio.p1_2.into_output();
-    let mut green = gpio.p1_1.into_output();
+    let mut red = gpio.p2_1.into_output();
 
     let mut tim0 = p.TIMER_A0.constrain().set_clock(_clock);
     let count = Count(10, TimerUnit::Hertz);
@@ -53,15 +54,10 @@ fn main() -> ! {
 
 
     red.set_high().unwrap();
-    blue.set_high().unwrap();
-
-
-    green.set_low().unwrap();
 
     loop {
         _watchdog.feed().unwrap();
         red.toggle().unwrap();
-        blue.toggle().unwrap();
         block!(tim0.wait()).unwrap();
     }
 }
