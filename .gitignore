@@ -1,3 +1,4 @@
 /target
 /.idea
 /msp432p401r-hal
+/Cargo.lock
